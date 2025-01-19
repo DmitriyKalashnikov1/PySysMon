@@ -82,6 +82,9 @@ class SystemMonitor(QMainWindow):
         else:
             self.writeButton.setText("Start record")
 
+        if self.clearHistory.text() == "Done!":
+            self.clearHistory.setText("Clear history DB")
+
 
     def updateTimerPeriod(self, value):
         self.updateSL.setText(f"Update rate: {value} ms")
@@ -92,6 +95,7 @@ class SystemMonitor(QMainWindow):
 
     def clearDB(self):
         self.db.truncate()
+        self.clearHistory.setText("Done!")
 
     def seeHistoryW(self):
         self.historyW = HistoryWindow(data=self.db.all())
